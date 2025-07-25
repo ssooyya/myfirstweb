@@ -13,14 +13,14 @@
 <body>
 	<div class="container">
 		<div>${name}님 환영합니다!</div>
-		<h1>${name}님의 Todos</h1>
+		<h1>${name}님의 할일</h1>
 		<table class="table">
 			<thead>
 				<tr>
 					<th>id</th>
-					<th>Description</th>
-					<th>Target Date</th>
-					<th>Is Done</th>
+					<th>내용</th>
+					<th>목표</th>
+					<th>완료여부</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -30,11 +30,12 @@
 						<td>${todo.description}</td>
 						<td>${todo.targetDate}</td>
 						<td>${todo.done}</td>
+						<td><a href="delete-todo?id=${todo.id}" class="btn btn-warning">삭제하기</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		<a href="add-todo" class="btn">Add Todo</a>
+		<a href="add-todo" class="btn btn-success">할일 추가하기</a>
 	</div>
 	<script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
 	<script src="webjars/jquery/3.6.0/jquery.min.js"></script>
