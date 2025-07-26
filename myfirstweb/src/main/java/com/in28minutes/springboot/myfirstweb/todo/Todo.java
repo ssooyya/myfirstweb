@@ -2,6 +2,8 @@ package com.in28minutes.springboot.myfirstweb.todo;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.validation.constraints.Size;
 
 public class Todo {
@@ -10,6 +12,7 @@ public class Todo {
 	private String username;
 	@Size(min=10, message="최소 10글자 이상 작성하세요")
 	private String description;
+//	@DateTimeFormat(pattern="yyyy-mm-dd")
 	private LocalDate targetDate;
 	private boolean done;
 	
