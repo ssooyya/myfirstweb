@@ -1,18 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Welcome Page</title>
-</head>
+<%@include file="common/header.jspf"%>
+<%@include file="common/navigation.jspf"%>
 <body>
-
-	<div class="container">
-		<div>${name}님 환영합니다</div>
-		<div>
-			<a href="list-todos">Manage</a> your todos
-		</div>
+<div class="container">
+	<div>${name}님 환영합니다!</div>
+	<div>
+		${name}님의 할일 <a href="list-todos">관리하러 가기</a>
 	</div>
-</body>
-</html>
+</div>
+<%@include file="common/footer.jspf"%>

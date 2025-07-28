@@ -1,54 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
 
-<link href="webjars/bootstrap/5.1.3/css/bootstrap.min.css"
-	rel="stylesheet">
-<title>List Todos Page</title>
-</head>
+<%@ include file="common/header.jspf"%>
+<%@ include file="common/navigation.jspf"%>
 <body>
-	<nav class="navbar navbar-expand-md navbar-light bg-light mb-3 p-1">
-		<div class="collapse navbar-collapse">
-			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-				<li class="nav-item"><a class="nav-link" href="/list-todos">Todos</a></li>
-			</ul>
-		</div>
-		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
-		</ul>
-	</nav>
-	<div class="container">
-		<h1>${name}님의할일</h1>
-		<table class="table">
-			<thead>
+<div class="container">
+	<h1>${name}님의 할일</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>내용</th>
+				<th>목표일</th>
+				<th>완료여부</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${todos}" var="todo">
 				<tr>
-					<th>내용</th>
-					<th>목표일</th>
-					<th>완료여부</th>
+					<td>${todo.description}</td>
+					<td>${todo.targetDate}</td>
+					<td>${todo.done}</td>
+					<td><a href="delete-todo?id=${todo.id}"
+						class="btn btn-warning">삭제하기</a></td>
+					<td><a href="update-todo?id=${todo.id}"
+						class="btn btn-success">수정하기</a></td>
 				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${todos}" var="todo">
-					<tr>
-						<td>${todo.description}</td>
-						<td>${todo.targetDate}</td>
-						<td>${todo.done}</td>
-						<td><a href="delete-todo?id=${todo.id}"
-							class="btn btn-warning">삭제하기</a></td>
-						<td><a href="update-todo?id=${todo.id}"
-							class="btn btn-success">수정하기</a></td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-		<a href="add-todo" class="btn btn-success">할일 추가하기</a>
-	</div>
-	<script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
-	<script src="webjars/jquery/3.6.0/jquery.min.js"></script>
-</body>
-</html>
+			</c:forEach>
+		</tbody>
+	</table>
+	<a href="add-todo" class="btn btn-success">할일 추가하기</a>
+</div>
